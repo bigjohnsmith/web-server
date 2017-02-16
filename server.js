@@ -1,13 +1,13 @@
 var express = require('express')
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 var middleware = require('./middleware.js')
 
 
 app.use(middleware.logger);
 
 app.get('/about', middleware.requireAuthentication, function(request, response) {
-	response.send('About Us');
+	response.send('This is the about us page');
 });
 
 app.use(express.static(__dirname + '/public'));
